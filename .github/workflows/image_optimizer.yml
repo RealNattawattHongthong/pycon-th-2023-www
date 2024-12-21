@@ -3,7 +3,7 @@ name: Image Optimizer
 on:
   push:
     paths:
-      - 'images/**'  # Trigger on changes to images folder
+      - 'image/**'  # Trigger on changes to images folder
     branches:
       - main        # or your default branch
 
