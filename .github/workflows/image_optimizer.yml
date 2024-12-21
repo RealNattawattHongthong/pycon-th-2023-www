@@ -80,6 +80,6 @@ jobs:
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add images_optimized/
+          git add images_optimize/
           git commit -m "Optimize images" || echo "No changes to commit"
           git push
