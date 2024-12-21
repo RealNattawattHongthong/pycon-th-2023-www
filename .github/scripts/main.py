@@ -4,6 +4,12 @@ from pathlib import Path
 import shutil
 
 def optimize_image(input_path, output_path, max_width=1920):
+    """
+    Optimize an image by:
+    1. Resizing if wider than max_width while maintaining aspect ratio
+    2. Converting to progressive JPEG
+    3. Optimizing quality
+    """
     try:
         # Create output directory if it doesn't exist
         os.makedirs(os.path.dirname(output_path), exist_ok=True)
@@ -39,17 +45,22 @@ def optimize_image(input_path, output_path, max_width=1920):
 
 def main():
     # Define paths
-    input_dir = Path("image")
+    input_dir = Path("images")
     output_dir = Path("image_optimize")
     
     # Create output directory if it doesn't exist
     output_dir.mkdir(exist_ok=True)
+    
+    # Process all images in input directory
     image_extensions = ('.jpg', '.jpeg', '.png', '.webp')
     
     for input_path in input_dir.rglob("*"):
         if input_path.suffix.lower() in image_extensions:
+            # Create relative path for output
             relative_path = input_path.relative_to(input_dir)
             output_path = output_dir / relative_path.with_suffix('.jpg')
+            
+            # Optimize image
             optimize_image(str(input_path), str(output_path))
 
 if __name__ == "__main__":
