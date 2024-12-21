@@ -3,7 +3,7 @@ name: Image Optimizer
 on:
   push:
     paths:
-      - 'images/**'  # This will trigger when files are added to the images folder
+      - 'image/**'  # This will trigger when files are added to the images folder
 
 jobs:
   optimize:
